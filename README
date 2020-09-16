@@ -1,0 +1,24 @@
+1. To install all the dependency packages:
+    pip install -r requirements.txt
+
+2. The api folder is the django app which contains the REST API views for 
+fetching the youtube data from the database
+
+3. The video collector has the scheduler 
+    -> collectvideos.py, contains a function that collect all the youtube 
+    data based on the predefined search and store the new records alone in 
+    the dayabase. I have used "youtube-data-api==0.0.20" python package
+        Note: Kindly replace the "api_key" 
+    -> scheduler.py, has a function that is scheduled to run the the 
+    function in collectionvideos.py for every 1 minute interval.
+
+4. For django to run the scheduler, I have overwritten the apps.py with a 
+    ready function and added the class in settings.py
+
+
+5. After installing the necessasry packages from requirements.txt,
+    -> python manage.py makemigrations
+    -> python manage.py migrate
+    -> python manage.py runserver --noreload
+
+6. You can get the results of the API from http://localhost:8000/youtubedata
